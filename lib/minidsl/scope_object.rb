@@ -1,6 +1,6 @@
 module Minidsl
     class Scope
-        class List < Scope
+        class Writer < Scope
             def initialize(list = [])
                 @list = list
             end
