@@ -1,38 +1,45 @@
 # Minidsl
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/minidsl`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
+Minidsl is an DSL way to generate mainly codes.
 
 ```ruby
-gem 'minidsl'
+$: << "lib"
+require 'minidsl'
+
+include Minidsl
+r = Scope.push_context :Writer
+
+
+class Test
+   def int(opt = {})
+      opt.map{|k, v|
+         "int #{k} = #{v};"
+      }
+   end
+   def println(str)
+     "System.out.println(#{str.inspect});"
+   end
+end
+
+s = pure_proxy Test.new
+s.instance_eval{
+  int a: 3, b: 5
+  println "Hello world"
+}
+
+puts r.result
+
 ```
+would generate
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install minidsl
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
+```java
+int a = 3;
+int b = 5;
+System.out.println("Hello world");
+```
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/minidsl.
+Bug reports and pull requests are welcome on GitHub at https://github.com/RGSS3/minidsl.
 
 
 ## License
