@@ -28,5 +28,9 @@ module Minidsl
      def self.ret(obj)
        top.ret obj
      end
+
+     def self.prebind(obj)
+       top.prebind obj
+     end
   end
 end

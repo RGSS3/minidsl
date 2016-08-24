@@ -1,6 +1,6 @@
 module Minidsl
     class Scope
-        class Writer < Scope
+        class Statements < Scope
             def initialize(list = [])
                 @list = list
             end
@@ -10,8 +10,12 @@ module Minidsl
                 obj
             end
 
-            def ret(obj)
+            def prebind(obj)
                 @list.concat Array(obj)
+                obj
+            end
+
+            def ret(obj)
                 obj
             end
 

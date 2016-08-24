@@ -5,7 +5,7 @@ module Minidsl
     lambda{|*a| 
       from self
       args = a.map{|x| from x}
-      ret real_method.call(*args)
+      prebind ret real_method.call(*args)
     }
   end
 
@@ -19,5 +19,9 @@ module Minidsl
 
   def ret(obj)
       Scope.ret obj
+  end
+
+  def prebind(obj)
+      Scope.prebind obj
   end
 end

@@ -7,7 +7,7 @@ $: << "lib"
 require 'minidsl'
 
 include Minidsl
-r = Scope.push_context :Writer
+r = Scope.push_context :Statements
 
 
 class Test
