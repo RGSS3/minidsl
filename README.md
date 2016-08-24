@@ -30,7 +30,13 @@ s.instance_eval{
 puts r.result
 
 ```
+would generate
 
+```java
+int a = 3;
+int b = 5;
+System.out.println("Hello world");
+```
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/RGSS3/minidsl.
