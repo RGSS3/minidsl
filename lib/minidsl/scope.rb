@@ -2,6 +2,11 @@ module Minidsl
     class Scope
      attr_accessor :parent
      SCOPE = []
+
+     def self.push_context(id)
+         self.push const_get(id).new
+     end
+
      def self.top
        SCOPE[-1]
      end

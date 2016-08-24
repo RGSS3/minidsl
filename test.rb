@@ -2,8 +2,7 @@ $: << "lib"
 require 'minidsl'
 
 include Minidsl
-r = Minidsl::Scope::List.new
-Minidsl::Scope.push r
+r = Scope.push_context :List
 
 
 class Test
